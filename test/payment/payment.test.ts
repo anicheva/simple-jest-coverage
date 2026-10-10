@@ -58,7 +58,7 @@ describe('Payment Service', () => {
 describe('error is expected when amount is below 0', () => {
   let paymentService: PaymentService
 
-  test('applying discount 50%', () => {
+  test('error is thrown with amount below 0', () => {
     expect(() => new PaymentService(0)).toThrow(
       'The initial amount must be greater than 0',
     )
