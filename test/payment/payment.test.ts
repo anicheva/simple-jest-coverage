@@ -39,7 +39,19 @@ describe('Payment Service', () => {
       paymentService.applyDiscount(101)
       expect(paymentService.amount).toBe(100)
     })
+    
+        test('applying discount after payment', () => {
+          paymentService.pay()
+          paymentService.applyDiscount(70)
+          expect(paymentService.amount).toBe(100)
+    })
 
+        test('applying multiple discounts', () => {
+      paymentService.applyDiscount(10)
+      paymentService.applyDiscount(20)
+      expect(paymentService.amount).toBe(72)
+    })
+  })
     describe('payment', () => {
       test('payment is successfully completed', () => {
         paymentService.pay()
@@ -52,7 +64,6 @@ describe('Payment Service', () => {
         expect(paymentService.pay()).toBeFalsy()
       })
     })
-  })
 })
 
 describe('error is expected when amount is below 0', () => {
